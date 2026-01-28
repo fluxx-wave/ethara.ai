@@ -6,7 +6,7 @@ import { AgGridReact } from "ag-grid-react";
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const MarkAttendance = () => {
-  
+
   const [employee, SetEmp] = useState([]);
   const [formData,SetFormData] = useState({
     date: '',
@@ -135,7 +135,7 @@ const handleAttendanceChange = (e, empId) => {
                 {employee.map((emp,id)=>(
                     <tr key={id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm text-gray-900"> {emp.name} </td>
-                        <td className="px-4 py-3 text-sm text-gray-600"> {emp.department} </td>
+                        <td className="px-4 py-3 text-sm text-gray-600"> {emp.department.department_name} </td>
                         <td className="px-4 py-3 text-sm text-gray-600"> {emp.email_address} </td>
                         <td className="px-4 py-3 text-center">
                         <input type="checkbox" value={emp.emp_id} 

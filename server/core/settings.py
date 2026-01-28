@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6lsy5tyd=r#hbv((+r&@t(=lbo$l3=86z4#l#yb3m$rp7s_p9l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -132,7 +132,12 @@ STATIC_URL = 'static/'
 
 
 CORS_ALLOW_ALL_ORIGINS = [
-    'http://localhost:5173/'
+    'http://localhost:5173/',
+    'https://hrwave.netlify.app/'
 ]
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173/',
+    'https://hrwave.netlify.app/'
+]

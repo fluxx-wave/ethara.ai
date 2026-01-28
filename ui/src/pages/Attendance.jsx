@@ -144,7 +144,7 @@ const Attendance = () => {
 
                 <div className="pt-4 border-t border-gray-100">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Total Employees</span>
+                    <span className="text-gray-600">Total Employees at the time of attendance </span>
                     <span className="font-bold text-gray-800">
                       {r.present.length + r.absent.length}
                     </span>

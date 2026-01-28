@@ -3,19 +3,42 @@ from rest_framework import serializers
 from .models import *
 
 
-class EmpSerializer(ModelSerializer):
-
-    class Meta:
-        model = Employee
-        fields = '__all__'
-
-
 
 class DeptSerializer(ModelSerializer):
 
     class Meta:
         model = Department
         fields = '__all__'
+
+
+class EmpSerializer(ModelSerializer):
+    # Nested department serializer
+    department = DeptSerializer(read_only=True)
+    department_id = serializers.PrimaryKeyRelatedField(
+        queryset=Department.objects.all(),
+        source='department',
+        write_only=True,
+        required=True
+    )
+    
+    class Meta:
+        model = Employee
+        fields = ['id', 'emp_id', 'name', 'email_address', 'department', 'department_id', 'created_at', 'updated_at']
+        read_only_fields = ['created_at', 'updated_at', 'department']
+    
+    def validate_emp_id(self, value):
+        """Validate emp_id uniqueness"""
+        if Employee.objects.filter(emp_id=value).exists():
+            raise serializers.ValidationError("An employee with this ID already exists.")
+        return value
+    
+    def validate_email_address(self, value):
+        """Validate email uniqueness"""
+        if Employee.objects.filter(email_address=value).exists():
+            raise serializers.ValidationError("This email address is already registered.")
+        return value
+
+
 
 
 
