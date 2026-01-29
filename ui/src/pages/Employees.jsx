@@ -24,7 +24,7 @@ const Employees = () => {
     const fetchEmployees = () => {
         api.get("employee")
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 SetEmp(res.data);
             })
             .catch((err) => {
@@ -99,7 +99,7 @@ const Employees = () => {
         
         api.post("add-emp", formData)
             .then((res) => {
-                console.log("Employee added successfully:", res.data);
+                // console.log("Employee added successfully:", res.data);
                 
                 setFormData({
                     emp_id: '',
@@ -112,7 +112,7 @@ const Employees = () => {
                 
                 fetchEmployees();
                 
-                alert('Employee added successfully!');
+                
             })
             .catch((err) => {
                 console.error("Error adding employee:", err.response);
