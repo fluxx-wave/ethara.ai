@@ -26,7 +26,7 @@ It uses Django REST Framework for the backend and React for the frontend.
   # frontend Setup 
   cd ui
   npm install
-  npm start
+  npm run dev
 
 ```
 
